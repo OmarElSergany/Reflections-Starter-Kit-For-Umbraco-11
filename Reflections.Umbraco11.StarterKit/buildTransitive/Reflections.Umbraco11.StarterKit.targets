@@ -1,0 +1,32 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ReflectionsUmbraco11StarterKitContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\Reflections.Umbraco11.StarterKit\**\*.*</ReflectionsUmbraco11StarterKitContentFilesPath>
+    <ReflectionsUmbraco11StarterKitwwwrootFilesPath>$(MSBuildThisFileDirectory)..\wwwroot\**\*.*</ReflectionsUmbraco11StarterKitwwwrootFilesPath>
+  </PropertyGroup>
+  
+
+  <Target Name="CopyReflectionsUmbraco11StarterKitAssets" BeforeTargets="Build">
+    <ItemGroup>
+      <ReflectionsUmbraco11StarterKitContentFiles Include="$(ReflectionsUmbraco11StarterKitContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying Reflections.Umbraco11.StarterKit files: $(ReflectionsUmbraco11StarterKitContentFilesPath) - #@(ReflectionsUmbraco11StarterKitContentFiles->Count()) files" Importance="high" />
+    <Copy SourceFiles="@(ReflectionsUmbraco11StarterKitContentFiles)" DestinationFiles="@(ReflectionsUmbraco11StarterKitContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Reflections.Umbraco11.StarterKit\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="CopyReflectionsUmbraco11StarterKitwwwrootAssets" BeforeTargets="Build">
+    <ItemGroup>
+      <ReflectionsUmbraco11StarterKitwwwrootFilesPath Include="$(ReflectionsUmbraco11StarterKitwwwrootFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying Reflections.Umbraco11.StarterKit files: $(ReflectionsUmbraco11StarterKitContentFilesPath) - #@(ReflectionsUmbraco11StarterKitContentFiles->Count()) files" Importance="high" />
+    <Copy SourceFiles="@(ReflectionsUmbraco11StarterKitwwwrootFilesPath)" DestinationFiles="@(ReflectionsUmbraco11StarterKitwwwrootFilesPath->'$(MSBuildProjectDirectory)\wwwroot\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+  
+  <Target Name="ClearReflectionsUmbraco11StarterKitAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <ReflectionsUmbraco11StarterKitDir Include="$(MSBuildProjectDirectory)\App_Plugins\Reflections.Umbraco11.StarterKit\" />
+    </ItemGroup>
+    <Message Text="Clear old Reflections.Umbraco11.StarterKit data" Importance="high" />
+    <RemoveDir Directories="@(ReflectionsUmbraco11StarterKitDir)" />
+  </Target>
+</Project>
+ 

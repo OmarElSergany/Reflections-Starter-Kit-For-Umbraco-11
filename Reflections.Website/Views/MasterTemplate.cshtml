@@ -1,0 +1,27 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        @await Html.PartialAsync("Generic/SEO")
+        
+        @RenderSection("Style", false)
+        
+    </head>
+    <body>
+        
+        @await Html.PartialAsync("Generic/Header")
+        
+        @RenderBody()
+        
+        @await Html.PartialAsync("Generic/Footer")
+        
+        @RenderSection("Script", false)
+        
+    </body>
+</html>

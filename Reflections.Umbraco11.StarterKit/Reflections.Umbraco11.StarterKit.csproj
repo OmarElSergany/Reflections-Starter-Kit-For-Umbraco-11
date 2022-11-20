@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ContentTargetFolders>.</ContentTargetFolders>
+    <Product>Reflections.Umbraco11.StarterKit</Product>
+    <PackageId>Reflections.Umbraco11.StarterKit</PackageId>
+    <Title>Reflections.Umbraco11.StarterKit</Title>
+    <Description>Reflections.Umbraco11.StarterKit</Description>
+    <PackageTags>umbraco plugin package</PackageTags>
+    <Authors>Omar El Sergany</Authors>
+    <Company>Reflections</Company>
+    <PackageProjectUrl>https://www.reflections-ibs.com</PackageProjectUrl>
+    <Copyright>all rights reserved © 2022</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="11.0.0-rc4" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="11.0.0-rc4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\Reflections.Umbraco11.StarterKit\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Migrations\package.zip" />
+    <None Remove="wwwroot\sitemap.xsl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\sitemap.xsl">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\package.zip" />
+  </ItemGroup>
+</Project>

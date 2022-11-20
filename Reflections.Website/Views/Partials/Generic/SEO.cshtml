@@ -1,0 +1,134 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@*
+@functions {
+    private static string EnsureUrlStartsWithDomain(string url)
+    {
+        if (url.StartsWith("http")){
+            return url;
+        }
+        else {
+            // whatever makes sense for your site here...
+            var domainPrefix = string.Format("https://{0}",HttpContextAccessor.HttpContext.Request.ServerVariables["HTTP_HOST"]);
+            return domainPrefix + url;
+        }
+    }
+}
+*@
+
+<!--SEO-->
+
+@if(Model.HasProperty("pageTitle") && Model.HasValue("pageTitle")){
+    <title>@(Model.Value("pageTitle"))</title>
+}
+
+
+@if(Model.HasProperty("canonical") && Model.HasValue("canonical")){
+     <link rel="canonical" href="@(Model.Value("canonical"))">
+}
+
+@if(Model.HasProperty("author") && Model.HasValue("author")){
+    <meta name="author" content="@(Model.Value("author"))">
+}
+
+@if(Model.HasProperty("metaDescription") && Model.HasValue("metaDescription")){
+    <meta name="description" content="@(Model.Value("metaDescription"))">
+}
+
+@if(Model.HasValue("metaKeywords") && Model.HasValue("metaKeywords")){
+    var keywordsValue = string.Join(", ", Model.Value<System.String[]>("metaKeywords"));
+    <meta name="keywords" content="@keywordsValue">
+}
+
+
+@if(Model.HasProperty("metaKeywords") && Model.HasValue("metaKeywords")){
+    string[] keywordsValue = Model.Value<string[]>("metaKeywords");
+    var keywords = (keywordsValue==null ? "" : String.Join(",", keywordsValue));
+    <meta name="keywords" content="@keywords" />
+}
+
+@if(Model.HasProperty("metaTagBlock") && Model.HasValue ("metaTagBlock")) {
+   @Html.Raw((Model.Value("metaTagBlock")))
+}
+
+@if(Model.HasProperty("oGURL") && Model.HasValue("oGURL")){
+    <meta property="og:url" content="@(Model.Value<string>("oGURL"))">
+}
+
+@if(Model.HasProperty("type") && Model.HasValue("type")){
+    <meta property="og:type" content="@(Model.Value<string>("type"))">
+}
+
+@if(Model.HasProperty("oGTitle") && Model.HasValue("oGTitle")){
+    <meta property="og:title" content="@(Model.Value("oGTitle"))">
+}
+
+@if(Model.HasProperty("oGDescription") && Model.HasValue("oGDescription")){
+    <meta property="og:description" content="@(Model.Value("oGDescription"))">
+}
+
+@*
+
+@if(Model.HasProperty("oGImage") && Model.HasValue("oGImage")){
+    var OGImage = Model.Value<IPublishedContent>("OGImage");
+    if (OGImage != null)
+    {
+        <meta property="og:image" content="@EnsureUrlStartsWithDomain(OGImage.Url)">
+    }
+}*@
+@if(Model.HasProperty("OGImage") && Model.HasValue("OGImage")){
+    var OGImage = Model.Value<IPublishedContent>("OGImage");
+    if (OGImage != null)
+    {
+        <meta property="og:image" content="@OGImage.Url(mode:UrlMode.Absolute)">
+    }
+}
+
+@if(Model.HasProperty("FBAppID") && Model.HasValue("FBAppID")){
+    <meta property="fb:app_id" content="@(Model.Value<string>("FBAppID"))">
+}
+@if(Model.HasProperty("locale") && Model.HasValue("locale")){
+    <meta property="og:locale" content="@(Model.Value<string>("locale"))">
+}
+
+<!--Twitter Cards-->
+
+@if(Model.HasProperty("cardType") && Model.HasValue("cardType")){
+    <meta name="twitter:card" content="@(Model.Value<string>("cardType"))">
+}
+@if(Model.HasProperty("site") && Model.HasValue("site")){
+    <meta name="twitter:site" content="@(Model.Value<string>("site"))">
+}
+
+@if(Model.HasProperty("twittertitle") && Model.HasValue("twittertitle")){
+    <meta name="twitter:title" content="@(Model.Value("twittertitle"))">
+}
+
+@if(Model.HasProperty("twitterdescription") && Model.HasValue("twitterdescription")){
+    <meta name="twitter:description" content="@(Model.Value("twitterdescription"))">
+}
+
+@*
+@if(Model.HasProperty("twitterimage") && Model.HasValue("twitterimage")){
+    var TwitterImage = Model.Value<IPublishedContent>("TwitterImage");
+    if (TwitterImage != null)
+    {
+        <meta Name="twitter:image" content="@EnsureUrlStartsWithDomain(TwitterImage.Url)">
+    }
+}
+*@
+
+@if(Model.HasProperty("twitterimage") && Model.HasValue("twitterimage")){
+    var TwitterImage = Model.Value<IPublishedContent>("twitterimage");
+    if (TwitterImage != null)
+    {
+        <meta Name="twitter:image" content="@TwitterImage.Url(mode:UrlMode.Absolute)">
+    }
+}
+
+@if(Model.HasProperty("twitterImageAlt") && Model.HasValue("twitterImageAlt")){
+    <meta Name="twitter:image:alt" content="@(Model.Value("twitterImageAlt"))">
+}
+
+
+<!--/SEO-->

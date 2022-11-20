@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    var selection = Model.Root().Children().Where(x => x.IsVisible());
+}
+
+@foreach (var item in selection)
+{
+    <li>
+        <a href="@item.Url()">
+            @(!(String.IsNullOrEmpty(item.Value<String>("menuDisplayName"))) ? item.Value("menuDisplayName") : item.Name)
+        </a>
+    </li>
+}

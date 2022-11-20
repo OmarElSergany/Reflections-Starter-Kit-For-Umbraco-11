@@ -1,0 +1,48 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.XMlsitemap>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = null;
+	var siteHomePage = Model.Root();
+    Context.Response.ContentType = "text/xml";
+    int maxSiteMapDepth = Model.HasValue("maxSiteMapDepth") ? Model.Value<int>("maxSiteMapDepth") : int.MaxValue;
+
+    string excludedDocumentTypeList = Model.Value<string>("excludedDocumentTypes");
+    string[] excludedDocumentTypes = (!String.IsNullOrEmpty(excludedDocumentTypeList)) ? excludedDocumentTypeList.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(p => p.Trim()).ToArray() : new string[] { };
+}
+
+<?xml-stylesheet type="text/xsl" href="@(Context.Request.Scheme)://@(Context.Request.Host)/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.google.com/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    @{
+        RenderSiteMapUrlEntry(siteHomePage);
+        RenderSiteMapUrlEntriesForChildren(siteHomePage);
+    }
+</urlset>
+
+@{
+    void RenderSiteMapUrlEntry(IPublishedContent node)
+    {
+        var changeFreq = node.Value("searchEngineChangeFrequency", fallback: Fallback.To(Fallback.Ancestors, Fallback.DefaultValue), defaultValue: "monthly");
+        // with the relative priority, this is a per page setting only, so we're not using recursion, so we won't set Fallback.ToAncestors here and we'll default to 0.5 if no value is set
+        var priority = node.HasValue("searchEngineRelativePriority") ? node.Value<string>("searchEngineRelativePriority") : "0.5";
+
+        <url>
+            <loc>@node.Url(mode: UrlMode.Absolute)</loc>
+            <lastmod>@(string.Format("{0:s}+00:00", node.UpdateDate))</lastmod>
+            <changefreq>@changeFreq</changefreq>
+            <priority>@priority</priority>
+        </url>
+    }
+
+    void RenderSiteMapUrlEntriesForChildren(IPublishedContent parentPage)
+    {
+        foreach (var page in parentPage.Children.Where(x => !excludedDocumentTypes.Contains(x.ContentType.Alias) && !x.Value<bool>("hideFromXmlSiteMap")))
+        {
+            RenderSiteMapUrlEntry(page);
+            if (page.Level < maxSiteMapDepth && page.Children.Any(x => !x.Value<bool>("hideFromXmlSiteMap")))
+            {
+                RenderSiteMapUrlEntriesForChildren(page);
+            }
+        }
+    }
+}
