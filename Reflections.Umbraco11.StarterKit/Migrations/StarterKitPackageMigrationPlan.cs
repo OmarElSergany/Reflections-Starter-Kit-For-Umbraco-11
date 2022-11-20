@@ -7,7 +7,7 @@ namespace Reflections.Umbraco11.StarterKit.Migrations
     public class StarterKitPackageMigrationPlan : PackageMigrationPlan
     {
         public StarterKitPackageMigrationPlan()
-            : base("Reflections.Umbraco11.StarterKit")
+            : base("Reflections.Umbraco.StarterKit")
         {
         }
 

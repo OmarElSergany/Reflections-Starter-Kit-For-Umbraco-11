@@ -17,7 +17,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\bin\Debug\net7.0\Reflections.Umbraco11.StarterKit.dll" target="lib\net7.0\Reflections.Umbraco11.StarterKit.dll" />
+    <file src="D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\bin\Release\net7.0\Reflections.Umbraco11.StarterKit.dll" target="lib\net7.0\Reflections.Umbraco11.StarterKit.dll" />
     <file src="D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\App_Plugins\Reflections.Umbraco11.StarterKit\package.manifest" target=".\App_Plugins\Reflections.Umbraco11.StarterKit\package.manifest" />
     <file src="D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\wwwroot\sitemap.xsl" target=".\wwwroot\sitemap.xsl" />
     <file src="D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\buildTransitive\Reflections.Umbraco11.StarterKit.targets" target="buildTransitive\Reflections.Umbraco11.StarterKit.targets" />

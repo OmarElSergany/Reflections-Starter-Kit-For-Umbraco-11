@@ -24,7 +24,9 @@ namespace Reflections.Umbraco11.StarterKit.Migrations
             var contentHome = _contentService.GetRootContent().FirstOrDefault(x => x.ContentType.Alias == "homePage");
             if (contentHome != null)
             {
+                //_logger.LogWarning("The installed Home page was start");
                 _contentService.SaveAndPublishBranch(contentHome, true);
+                //_logger.LogWarning("The installed Home page was finiched");
             }
             else
             {

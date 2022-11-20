@@ -24,6 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\ImportPackageXmlMigration.cs" />
+    <Compile Remove="Migrations\StarterKitPackageMigrationPlan.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Migrations\package.zip" />
     <None Remove="wwwroot\sitemap.xsl" />
   </ItemGroup>
