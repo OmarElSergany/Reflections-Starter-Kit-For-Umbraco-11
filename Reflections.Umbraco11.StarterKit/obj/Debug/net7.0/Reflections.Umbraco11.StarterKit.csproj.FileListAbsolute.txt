@@ -606,6 +606,8 @@ D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\bin\Debug\n
 D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\bin\Debug\net7.0\refs\System.Xml.XPath.XDocument.dll
 D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\bin\Debug\net7.0\refs\WindowsBase.dll
 D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\obj\Debug\net7.0\Reflections.Umbraco11.StarterKit.csproj.AssemblyReference.cache
+D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\obj\Debug\net7.0\Reflections.Umbraco11.StarterKit.Properties.Resources.resources
+D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\obj\Debug\net7.0\Reflections.Umbraco11.StarterKit.csproj.GenerateResource.cache
 D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\obj\Debug\net7.0\Reflections.Umbraco11.StarterKit.GeneratedMSBuildEditorConfig.editorconfig
 D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\obj\Debug\net7.0\Reflections.Umbraco11.StarterKit.AssemblyInfoInputs.cache
 D:\source\repos\Reflections.Website\Reflections.Umbraco11.StarterKit\obj\Debug\net7.0\Reflections.Umbraco11.StarterKit.AssemblyInfo.cs

@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflections.Website", "Refl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflections.Umbraco11.StarterKit", "Reflections.Umbraco11.StarterKit\Reflections.Umbraco11.StarterKit.csproj", "{4F5E2FF6-C995-4747-922D-FA075EA0B8B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflections.Umbraco11.StarterKit.Models", "Reflections.Umbraco11.StarterKit.Models\Reflections.Umbraco11.StarterKit.Models.csproj", "{CDD65355-F4B4-49AB-AA71-B281EA33A077}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoProject1", "UmbracoProject1\UmbracoProject1.csproj", "{9F571B9A-46E3-4F6B-BB2F-A92B6AB6D7AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{4F5E2FF6-C995-4747-922D-FA075EA0B8B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F5E2FF6-C995-4747-922D-FA075EA0B8B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F5E2FF6-C995-4747-922D-FA075EA0B8B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD65355-F4B4-49AB-AA71-B281EA33A077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD65355-F4B4-49AB-AA71-B281EA33A077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD65355-F4B4-49AB-AA71-B281EA33A077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD65355-F4B4-49AB-AA71-B281EA33A077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F571B9A-46E3-4F6B-BB2F-A92B6AB6D7AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F571B9A-46E3-4F6B-BB2F-A92B6AB6D7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F571B9A-46E3-4F6B-BB2F-A92B6AB6D7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F571B9A-46E3-4F6B-BB2F-A92B6AB6D7AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

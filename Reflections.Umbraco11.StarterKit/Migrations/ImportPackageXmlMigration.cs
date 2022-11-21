@@ -1,6 +1,10 @@
 ﻿using Microsoft.Extensions.Options;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Xml.Linq;
 using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.IO;
+using Umbraco.Cms.Core.Packaging;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Strings;
@@ -19,20 +23,25 @@ namespace Reflections.Umbraco11.StarterKit.Migrations
             IShortStringHelper shortStringHelper,
             IContentTypeBaseServiceProvider contentTypeBaseServiceProvider,
             IMigrationContext context,
-            IOptions<PackageMigrationSettings> packageMigrationSettings)
+            IOptions<PackageMigrationSettings> packageMigrationsSettings)
             : base(packagingService,
                 mediaService,
                 mediaFileManager,
                 mediaUrlGenerators,
                 shortStringHelper,
                 contentTypeBaseServiceProvider,
-                context, packageMigrationSettings)
+                context,
+                packageMigrationsSettings)
         {
         }
 
         protected override void Migrate()
         {
+            //Task ImportPackageTask = Task.Run(() => {
             ImportPackage.FromEmbeddedResource(GetType()).Do();
+            //});
+            //ImportPackageTask.Wait();
+            //Thread.Sleep(5000);
             Context.AddPostMigration<PublishRootBranchPostMigration>();
         }
     }
